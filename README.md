@@ -4,7 +4,25 @@ Welcome to your coding interview! This is a hands-on assessment of your Python p
 
 ## Environment Setup
 
-This repository uses GitHub Codespaces, which provides you with a complete development environment in the browser.
+This repository uses GitHub Codespaces with an integrated SQLite database.
+
+### Initial Setup
+
+1. Open a terminal in Codespaces
+2. Initialize the database:
+   ```bash
+   python -m interview.services.db_init
+   ```
+3. Verify the database:
+   ```bash
+   sqlite3 data/interview.db
+   ```
+   Try some queries:
+   ```sql
+   .tables
+   SELECT * FROM products LIMIT 3;
+   .quit
+   ```
 
 ### Getting Started with Codespaces
 
@@ -26,34 +44,44 @@ This repository uses GitHub Codespaces, which provides you with a complete devel
 
 You have 90 minutes to complete the following tasks:
 
-### 1. Python Basics (30 minutes)
-- Fix the string manipulation methods in `interview/python_basics.py`
-- Fix the data structure implementations
-- Run tests with: `pytest tests/test_python_basics.py`
+### 1. SQL Command Line Task (20 minutes)
+Using the SQLite command line:
+1. Find all products with price > $100
+2. Calculate total revenue per category
+3. Find users who made more than 1 order
 
-### 2. PySpark Problems (30 minutes)
-- Fix the PySpark transformations in `interview/spark_problems.py`
-- Focus on correct DataFrame operations
-- Run tests with: `pytest tests/test_spark_problems.py`
+### 2. Python & SQL Integration (40 minutes)
+Fix the implementations in:
+- `interview/sql_problems.py`
+- `interview/data_analyzer.py`
 
-### 3. SQL Problems (30 minutes)
-- Fix the SQL queries in `interview/sql_problems.py`
-- Ensure proper joins, aggregations, and filtering
-- Write clear and efficient queries
+The tasks are interconnected - the SQL queries you write will be used by the Python analysis functions.
+
+### 3. Data Analysis (30 minutes)
+Implement the analysis functions in `data_analyzer.py` that combine:
+- SQL queries
+- Python data processing
+- Business logic
 
 ## Evaluation Criteria
 
 You will be evaluated on:
-- Code correctness (all tests passing)
-- Code clarity and style
+- SQL query optimization
+- Python data processing efficiency
+- Understanding of database relationships
+- Code organization and clarity
 - Problem-solving approach
-- Understanding of Python, PySpark, and SQL concepts
 
 ## Tips
 
-- Read the test files to understand what each function should do
-- Use `print()` statements for debugging
-- Check the Python documentation when needed
+- Use `sqlite3 data/interview.db` to explore the database
+- Useful SQLite commands:
+  - `.tables` - list all tables
+  - `.schema table_name` - show table structure
+  - `.mode column` - pretty print results
+  - `.headers on` - show column headers
+- Test your SQL queries in the command line before implementing them in Python
+- Consider the relationships between tables when writing queries
 - Commit your changes regularly
 - Focus on making the tests pass first, then improve the code if time permits
 
