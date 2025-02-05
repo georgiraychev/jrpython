@@ -9,11 +9,15 @@ This repository uses GitHub Codespaces with an integrated SQLite database.
 ### Initial Setup
 
 1. Open a terminal in Codespaces
-2. Initialize the database:
+2. If SQLite is not installed, run:
+   ```bash
+   sudo apt-get update && sudo apt-get install -y sqlite3
+   ```
+3. Initialize the database:
    ```bash
    python -m interview.services.db_init
    ```
-3. Verify the database:
+4. Verify the database:
    ```bash
    sqlite3 data/interview.db
    ```
